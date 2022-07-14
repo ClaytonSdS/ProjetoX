@@ -1,0 +1,472 @@
+#: import NoTransition kivy.uix.screenmanager.NoTransition
+#: import GridLayout kivymd.uix.gridlayout.MDGridLayout
+#: import MDRaisedButton kivymd.uix.button.MDRaisedButton
+#:import Gradient kivy_gradient.Gradient
+#: import get_color_from_hex kivy.utils.get_color_from_hex
+#: import Image kivy.uix.image.Image
+#: import RoundedRectangle kivy.graphics.RoundedRectangle
+#: import Clock kivy.clock.Clock
+#: import Factory kivy.factory.Factory
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#: import partial functools.partial
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+<ClasseT@Teste>:
+    orientation: "horizontal"
+    size_hint: None, None
+    height: 10
+    width: 10
+    id_: ''
+    md_bg_color: 0,0,0,0
+
+    BoxLayout:
+        id: box_work
+        size_hint_x: 1
+        canvas.before:
+            Color:
+                rgba: get_color_from_hex('#d9d9d9')
+            Line:
+                width: 1
+                rectangle: self.x, self.y, self.width, self.height
+        Button:
+            font_size: 14
+            size_hint_x: 1
+            text_size: self.size
+            text: root.id_
+            valign: "middle"
+            halign: "center"
+            markup: True
+            color: get_color_from_hex('#242425')
+            on_press: print(self.parent.parent.parent.parent)
+
+        Button:
+            font_size: 14
+            size_hint_x: 1
+            text_size: self.size
+            text: root.id_
+            valign: "middle"
+            halign: "center"
+            markup: True
+            color: get_color_from_hex('#242425')
+
+        Button:
+            font_size: 14
+            size_hint_x: 1
+            text_size: self.size
+            text: root.id_
+            valign: "middle"
+            halign: "center"
+            markup: True
+            color: get_color_from_hex('#242425')
+
+        Button:
+            font_size: 14
+            size_hint_x: 1
+            text_size: self.size
+            text: root.id_
+            valign: "middle"
+            halign: "center"
+            markup: True
+            color: get_color_from_hex('#242425')
+
+        Button:
+            font_size: 14
+            size_hint_x: 1
+            text_size: self.size
+            text: root.id_
+            valign: "middle"
+            halign: "center"
+            markup: True
+            color: get_color_from_hex('#242425')
+
+<TittleBar_Button>
+    Image:
+        id: icon_tittlebar
+        pos_hint: {"center_x": 0.5, "center_y": .6}
+        source: "icons\\{}.png".format(str(root.icon))
+        size_hint: (0.5,0.5)
+        orientation: 'vertical'
+
+    Label:
+        id: icon_name
+        pos_hint: {"center_x": 0.5, "center_y": .25}
+        color: get_color_from_hex("#FFFFFF")
+        font_size: int(self.parent.width/2 * 0.2)
+
+<Interface>
+    rows: 2
+    cols: 1
+    md_bg_color: get_color_from_hex("#25272b")
+    spacing: 1
+
+    MDBoxLayout:
+        orientation: "horizontal"
+        TittleBar_Button:
+            name: "Abrir"
+            icon: "open"
+            on_release:  app.root.get_screen("WorkSpace").increase()
+
+        TittleBar_Button:
+            name: "Salvar"
+            icon: "save"
+
+        TittleBar_Button:
+            name: "Novo"
+            icon: "new-file"
+
+    MDBoxLayout:
+        size_hint_y: 0.4
+        md_bg_color: get_color_from_hex("#393939")
+        Label:
+            pos_hint: {"center_x": 0.5, "center_y": .5}
+            color: get_color_from_hex("#FFFFFF")
+            font_size: int(self.parent.width/2 * 0.09)
+            text: "Interface"
+
+<Propriedades>
+    rows: 2
+    cols: 1
+    md_bg_color: get_color_from_hex("#25272b")
+    spacing: 1
+
+    MDBoxLayout:
+        orientation: "horizontal"
+        TittleBar_Button:
+            name: "Grid"
+            icon: "grid"
+
+        TittleBar_Button:
+            name: "Elementos"
+            icon: "links"
+
+        TittleBar_Button:
+            name: "Fluído"
+            icon: "flow-prop"
+
+    MDBoxLayout:
+        size_hint_y: 0.4
+        md_bg_color: get_color_from_hex("#393939")
+        Label:
+            pos_hint: {"center_x": 0.5, "center_y": .5}
+            color: get_color_from_hex("#FFFFFF")
+            font_size: int(self.parent.width/2 * 0.09)
+            text: "Propriedades"
+
+<Simulacao>
+    rows: 2
+    cols: 1
+    md_bg_color: get_color_from_hex("#25272b")
+    spacing: 1
+
+    MDBoxLayout:
+        orientation: "horizontal"
+        TittleBar_Button:
+            name: "Pausar"
+            icon: "pause"
+
+        TittleBar_Button:
+            name: "Iniciar"
+            icon: "play"
+
+        TittleBar_Button:
+            name: "Configurações"
+            icon: "grid-prop"
+
+    MDBoxLayout:
+        size_hint_y: 0.4
+        md_bg_color: get_color_from_hex("#393939")
+        Label:
+            pos_hint: {"center_x": 0.5, "center_y": .5}
+            color: get_color_from_hex("#FFFFFF")
+            font_size: int(self.parent.width/2 * 0.09)
+            text: "Simulação"
+
+<Gerais>
+    rows: 2
+    cols: 1
+    md_bg_color: get_color_from_hex("#25272b")
+    spacing: 1
+
+    MDBoxLayout:
+        orientation: "horizontal"
+        TittleBar_Button:
+            name: "Abrir"
+            icon: "flow-prop"
+
+        TittleBar_Button:
+            name: "Abrir"
+            icon: "flow-prop"
+
+        TittleBar_Button:
+            name: "Abrir"
+            icon: "flow-prop"
+
+    MDBoxLayout:
+        size_hint_y: 0.4
+        md_bg_color: get_color_from_hex("#393939")
+        Label:
+            pos_hint: {"center_x": 0.5, "center_y": .5}
+            color: get_color_from_hex("#FFFFFF")
+            font_size: int(self.parent.width/2 * 0.09)
+            text: "Gerais"
+
+WindowManager:
+    transition: FadeTransition()
+    Inicio:
+	    name: "Inicio"
+	WorkSpace:
+	    name: "WorkSpace"
+
+
+#///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+<Inicio>
+    Button:
+        on_release: root.manager.current = "WorkSpace"
+
+
+#///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+<WorkSpace>
+    recycle_view: recycle_view
+    items_box: items_box
+
+    # SEPARATOR
+    MDGridLayout:
+        rows: 2
+        cols: 1
+        spacing: 2
+        md_bg_color: get_color_from_hex("#393939")
+
+        # TITLE BAR
+        MDGridLayout:
+            rows: 1
+            cols: 4
+            size_hint_y: 0.15
+            spacing: 2
+            md_bg_color: get_color_from_hex("#25272b")
+
+            Interface:
+            Propriedades:
+            Simulacao:
+            Gerais:
+
+
+        # ALL MY WORK SPACE REGION
+        MDGridLayout:
+            cols: 2
+            rows: 1
+            md_bg_color: get_color_from_hex("#393939")
+            spacing: 2
+
+            # PERSONAL ELEMENTS FIELD
+            MDBoxLayout:
+                size_hint_x: 0.2
+                md_bg_color: get_color_from_hex("#494a4c")
+
+            # WORKSHEET // NODES // PROPERTIES GRID
+            MDGridLayout:
+                cols: 2
+                rows: 1
+                md_bg_color: get_color_from_hex("#393939")
+                spacing: 2
+
+                # WORKSHEET
+                MDBoxLayout:
+                    orientation: "vertical"
+                    md_bg_color: get_color_from_hex("#2a2c31")
+
+                    # FILES OPEN BAR
+                    MDBoxLayout:
+                        size_hint_y: 0.05
+
+                        Button:
+                            text: "Projeto - Semae"
+
+                        Button:
+                            text: "Projeto - Lutech"
+
+                        Button:
+                            text: "Projeto - Industrial"
+                        Button:
+                            text: "Projeto - Industrial"
+
+                        Button:
+                            text: "Projeto - Industrial"
+
+
+                    # GRID SPACE
+                    RecycleView:
+                        id: recycle_view
+                        size_hint: 1, 0.9
+                        do_scroll_x: True
+                        width: 400
+                        viewclass: "ClasseT"
+                        RecycleBoxLayout:
+                            id: items_box
+                            orientation: "vertical"
+                            default_size_hint: 1, None
+                            size_hint: 1, None
+                            height: self.minimum_height
+
+
+
+                ################################################################################################
+                # NODES // PROPERTIES SPACE
+                MDGridLayout:
+                    cols: 2
+                    #size_hint_x: 0
+                    size_hint_x: 0.4
+                    rows: 1
+                    md_bg_color: get_color_from_hex("#393939")
+                    spacing: 2
+
+
+                    ################################################################################################
+                    # NODES
+                    MDBoxLayout:
+                        orientation: "vertical"
+                        md_bg_color: get_color_from_hex("#393939")
+                        spacing: 2
+
+                        # LABEL PROPRIEDADES
+                        MDBoxLayout:
+                            size_hint_y: 0.10
+                            canvas:
+                                Color:
+                                    rgb: 1, 1, 1
+                                Rectangle:
+                                    size: self.size
+                                    pos: self.pos
+                                    texture: Gradient.horizontal(get_color_from_hex("#6e5dcd"), get_color_from_hex("#5243a5"))   # azul padrão das letras
+                            MDLabel:
+                                text: "    Propriedades"
+                                halign: "left"
+                                valign: "middle"
+                                color: get_color_from_hex("#FFFFFF")
+                                #font_style: "Subtitle1"
+                                font_size: int(self.parent.width/2 * 0.2)
+                                italic: True
+                        # BOX PARA CONTEUDO - PROPRIEDADES
+                        MDBoxLayout:
+                            md_bg_color: get_color_from_hex("#494a4c")
+
+                        # LABEL VALORES
+                        MDBoxLayout:
+                            size_hint_y: 0.10
+                            canvas:
+                                Color:
+                                    rgb: 1, 1, 1
+                                Rectangle:
+                                    size: self.size
+                                    pos: self.pos
+                                    texture: Gradient.horizontal(get_color_from_hex("#6e5dcd"), get_color_from_hex("#5243a5"))   # azul padrão das letras
+                            MDLabel:
+                                text: "    Valores"
+                                halign: "left"
+                                valign: "middle"
+                                color: get_color_from_hex("#FFFFFF")
+                                #font_style: "Subtitle1"
+                                font_size: int(self.parent.width/2 * 0.2)
+                                italic: True
+
+                        # BOX PARA CONTEUDO - VALORES
+                        MDBoxLayout:
+                            md_bg_color: get_color_from_hex("#494a4c")
+
+
+                    ################################################################################################
+                    # PROPERTIES
+                    MDBoxLayout:
+                        orientation: "vertical"
+                        md_bg_color: get_color_from_hex("#393939")
+                        spacing: 2
+
+                        # LABEL REFERÊNCIA // DIMENSIONAIS
+                        MDBoxLayout:
+                            size_hint_y: 0.10
+                            canvas:
+                                Color:
+                                    rgb: 1, 1, 1
+                                Rectangle:
+                                    size: self.size
+                                    pos: self.pos
+                                    texture: Gradient.horizontal(get_color_from_hex("#6e5dcd"), get_color_from_hex("#5243a5"))   # azul padrão das letras
+                            MDLabel:
+                                text: "    Referência"
+                                halign: "left"
+                                valign: "middle"
+                                color: get_color_from_hex("#FFFFFF")
+                                #font_style: "Subtitle1"
+                                font_size: int(self.parent.width/2 * 0.2)
+                                italic: True
+                        # BOX PARA CONTEUDO - REFERÊNCIA // DIMENSIONAIS
+                        MDBoxLayout:
+                            orientation: "vertical"
+                            md_bg_color: get_color_from_hex("#393939")
+                            spacing: 2
+
+                            Button_Referencia:
+                                orientation: "vertical"
+                                size_hint_y: 0.20
+
+                                MDLabel:
+                                    text: "    Idelchik"
+                                    halign: "left"
+                                    valign: "middle"
+                                    color: get_color_from_hex("#FFFFFF")
+                                    #font_style: "Subtitle1"
+                                    font_size: int(self.parent.width/2 * 0.2)
+                                    italic: True
+
+
+                            # LABEL  DIMENSIONAIS
+                            MDBoxLayout:
+                                size_hint_y: 0.14
+                                canvas:
+                                    Color:
+                                        rgb: 1, 1, 1
+                                    Rectangle:
+                                        size: self.size
+                                        pos: self.pos
+                                        texture: Gradient.horizontal(get_color_from_hex("#6e5dcd"), get_color_from_hex("#5243a5"))   # azul padrão das letras
+                                MDLabel:
+                                    text: "    Dimensionais"
+                                    halign: "left"
+                                    valign: "middle"
+                                    color: get_color_from_hex("#FFFFFF")
+                                    #font_style: "Subtitle1"
+                                    font_size: int(self.parent.width/2 * 0.2)
+                                    italic: True
+
+                            MDBoxLayout:
+                                md_bg_color: get_color_from_hex("#494a4c")
+
+
+
+                        # LABEL PARÂMETROS
+                        MDBoxLayout:
+                            size_hint_y: 0.10
+                            canvas:
+                                Color:
+                                    rgb: 1, 1, 1
+                                Rectangle:
+                                    size: self.size
+                                    pos: self.pos
+                                    texture: Gradient.horizontal(get_color_from_hex("#6e5dcd"), get_color_from_hex("#5243a5"))   # azul padrão das letras
+                            MDLabel:
+                                text: "    Parâmetros"
+                                halign: "left"
+                                valign: "middle"
+                                color: get_color_from_hex("#FFFFFF")
+                                #font_style: "Subtitle1"
+                                font_size: int(self.parent.width/2 * 0.2)
+                                italic: True
+
+                        # BOX PARA CONTEUDO - PARÂMETROS
+                        MDBoxLayout:
+                            md_bg_color: get_color_from_hex("#494a4c")
+
+
+
+
+
+
